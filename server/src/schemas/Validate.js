@@ -13,5 +13,5 @@ const Validate = schema => {
       }
     }
   }
-  
-  export default Validate;
+
+export default Validate;
