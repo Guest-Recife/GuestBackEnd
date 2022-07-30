@@ -61,12 +61,21 @@ class Database {
       });
   }
 
-  authenticate() {
+  async authenticate() {
     try {
-      this.connection.authenticate();
-      console.log('Database is connected.');
+      await this.connection.authenticate();
+      return console.log('Database is connected.');
     } catch (error) {
-      console.log(`Database connection error: ${error}`);
+      return console.log(`Database connection error: ${error}`);
+    }
+  }
+
+  async disconnect() {
+    try {
+      await this.connection.close();
+      return console.log('Database is disconnected.');
+    } catch (error) {
+      return console.log(`Database disconnection error: ${error}`);
     }
   }
 };
