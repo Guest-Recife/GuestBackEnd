@@ -16,11 +16,12 @@
         <div class="icons_triplo">
           <img class="icons" src="../ICONS/signal.svg" alt="icone_sinal">
           <img class="icons" src="../ICONS/wifi.svg" alt="icone_wif">
-          <img class="icons" src="../ICONS/battery.svg" alt="icone_bateria">
+          <img class="icons battery" src="../ICONS/battery.svg" alt="icone_bateria">
         </div>
         
     </div>
 </header>
+
 
   <img class="imagem" src="../ICONS/icone guest.jpeg" alt="logo_guest">
   <div class="container" >
@@ -35,48 +36,72 @@
           <h1>Cadastra-se agora na Guest!</h1> 
           <h3>Preencha o formulário para continuar</h3>
         
-        <div class="input_menu">
+          <div class="input_menu">
 
-          <div class="input_group"> 
-            <img class="icons" src="../ICONS/profile.svg" alt="icone_perfil">
-            <input class="input" id="nome_cad" name="nome_cad" required="required" type="text" placeholder="nome" />
-          </div>
+            <div class="input_group"> 
+              <img class="icons" src="../ICONS/profile.svg" alt="icone_perfil">
+              <input class="input name" type="text" placeholder="Nome"/>
+            </div>
 
-          <div class="input_group"> 
-            <img class="icons" src="../ICONS/telephone.svg" alt="icone_telefone"> 
-            <input class="input" id="telefone_cad" name="telefome_cad" required="required" type="phone" placeholder="+5581982889431" />
-          </div>
-           
-          <div class="input_group"> 
-            <img class="icons" src="../ICONS/email.svg" alt="icone_carta">
-            <input class="input" id="email_cad" name="email_cad" required="required" type="email" placeholder="contato@htmlecsspro.com"/> 
-          </div>
-           
-          <div class="input_group"> 
-            <img class="icons" src="../ICONS/locker.svg" alt="icone_cadeado">
-            <input class="input" id="senha_cad" name="senha_cad" required="required" type="password" placeholder="ex. 1234"/>
-            <img class="icons" src="../ICONS/eye.svg" alt="icone_olho">
-          </div>
+            <div class="input_group"> 
+              <img class="icons" src="../ICONS/telephone.svg" alt="icone_telefone"> 
+              <input class="input" type="phone" placeholder="Telefone" />
+            </div>
+            
+            <div class="input_group"> 
+              <img class="icons" src="../ICONS/email.svg" alt="icone_carta">
+              <input class="input" type="email" placeholder="Email"/> 
+            </div>
+            
+            <div class="input_group"> 
+              <img class="icons" src="../ICONS/locker.svg" alt="icone_cadeado">
+              <input id="senha" class="input" type="password" placeholder="Senha"/>
+              <img onclick="mostrarOcultarSenha()" class="icons" src="../ICONS/eye.svg" alt="icone_olho">
+            </div>
 
-          <div class="input_group"> 
-            <img class="icons" src="../ICONS/locker.svg" alt="icone_cadeado">
-            <input class="input" id="confirmarsenha_cad" name="confirmarsenha_cad" required="required" type="password" placeholder="ex. 1234"/>
-            <img class="icons" src="../ICONS/eye.svg" alt="icone_olho">
-          </div>
-           
-          <button type="submit">Cadastrar</button>
-           
-          <div class="link">  
-            Já tem uma conta?
-            <a href="#paralogin"> Entrar </a>
-          </div>
+            <div class="input_group"> 
+              <img class="icons" src="../ICONS/locker.svg" alt="icone_cadeado">
+              <input id="confirmarSenha" class="input" type="password" placeholder="Confirmar senha"/>
+              <img onclick="mostrarOcultarSenha2()" class="icons" src="../ICONS/eye.svg" alt="icone_olho">
+            </div>
+            
+            <button type="submit" class="register">Cadastrar</button>
+            
+            <div class="link">
+              <h3>Já tem uma conta?</h3>  
+              <a href="#paralogin"> Entrar </a>
+            </div>
 
-        </div>
-          
+          </div>             
 
         </form>
+
       </div>
     </div>
   </div>  
+
+
 </body>
 </html>
+
+<script>
+  function mostrarOcultarSenha(){
+    var senha = document.getElementById("senha");
+    if(senha.type=="password"){
+      senha.type = "text";
+    }else{
+      senha.type = "password";
+    }
+  }
+
+  function mostrarOcultarSenha2(){
+    var senha = document.getElementById("confirmarSenha");
+    if(senha.type=="password"){
+      senha.type = "text";
+    }else{
+      senha.type = "password";
+    }
+  }
+
+
+</script>

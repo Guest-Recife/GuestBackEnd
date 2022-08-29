@@ -8,7 +8,22 @@
 
 body{
     font-family: 'Inter', sans-serif;
-    padding: 15px;
+}
+
+header,body{
+    background-color: #de5c3d;
+}
+
+/* HEADER */
+
+.icons_header{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.icons.battery{
+    transform: rotate(90deg);
 }
 
 img.icons{
@@ -16,29 +31,23 @@ img.icons{
     width: 16px;
 }
 
+/* LOGO */
+
 .imagem{
     height: 200px;
     width: 400px;
 }
 
-header,body{
-    background-color: #de5c3d;
-}
-
+/* FORM */
 #cadastro{
-    
     background-color: #ffffff;
     height: 50vh;
     width: 80vw;
     margin-top: 25px;
     padding: 15px;
     
-}
-
-.content form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    border-radius:  15px 0px 15px 0px;
+    box-shadow:2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 #cadastro form h1 {
@@ -56,23 +65,46 @@ header,body{
     margin-top: 10px;
 }
 
+#cadastro form .input_menu .input_group{
+    border: 0;
+	border-bottom: 1px solid #777777;
+
+    height: 2.5vh;
+}
+
+.input_menu{
+    width: 85%;
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .input_group{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 20px;
-
+    margin-top: 30px;
 }
+
+
+.content form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 .input{
     width: 100%;
     margin-left: 10px;
+
+    border: none;
 }
 
-.icons_header{
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .content{
     display: flex;
@@ -80,11 +112,55 @@ header,body{
     align-items: center;
 }
 
-button{
-    margin-top: 20px;
+/* SUBMIT */
+
+button.register{
+    margin-top: 30px;
+    color: #ffffff;
+    letter-spacing: 1px;
+
+    height: 35px;
+    width: 100%;
     
+    background-color: #de5c3d;
+    border-radius: 12px;
+    border: none;
+
+    font-size: 10px;
+    text-transform: uppercase;
 }
 
+button.register:focus{
+    background-color: #eb775b;
+}
+
+
+
 .link{
-    margin-top: 20px;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+
+}
+
+#cadastro .link h3{
+    margin-top: 0px;
+    color: #777777;
+    margin-right: 5px;
+}
+
+.link a{
+    text-decoration: none;
+    color: #de5c3d;
+}
+
+/* INPUT */
+
+.input_group input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+
+    font-weight: 500;
 }
