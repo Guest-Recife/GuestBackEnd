@@ -2,30 +2,16 @@ import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 import fs from 'fs';
 
+import dbConfig from './db_config.js';
+
 dotenv.config();
 
 class Database {
   constructor() {
-    const dbConfig = {
-      database: process.env.DATABASE,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      host: process.env.DATABASE_HOST,
-      port: process.env.DATABASE_PORT || 5432,
-      dialect: 'postgres',
-      logging: false,
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false
-        }
-      },
-      define: {
-        underscored: true
-      }
-    };
-
-    this.connection = new Sequelize(dbConfig);
+    console.log(dbConfig);
+    this.connection = new Sequelize(dbConfig.url, {
+      ...dbConfig
+    });
   }
 
   async setup() {
