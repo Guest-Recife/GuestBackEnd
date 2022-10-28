@@ -2,36 +2,14 @@ import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 import fs from 'fs';
 
+import dbConfig from './db_config.js';
+
 dotenv.config();
 
 class Database {
   constructor() {
-    const dbConfig = {
-      database: process.env.DATABASE,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      host: process.env.DATABASE_HOST,
-      port: process.env.DATABASE_PORT || 5432,
-      dialect: 'postgres',
-      logging: false,
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false
-        }
-      },
-      define: {
-        underscored: true
-      }
-    };
-
-    this.connection = new Sequelize(dbConfig);
-  }
-
-  async setup() {
-    this.loadModels();
-    this.associateModels();
-    return this.authenticate();
+    this.models = {};
+    this.connection = new Sequelize(dbConfig.url, dbConfig.options);
   }
 
   loadModels() {
@@ -43,7 +21,7 @@ class Database {
 
         if (!Model || Model.name === 'BaseModel') return;
 
-        this.models[Model.name] = Model.load(this.sequelize, Sequelize);
+        this.models[Model.name] = Model.load(this.connection, Sequelize);
       });
   }
 
@@ -52,7 +30,7 @@ class Database {
       .filter(model => typeof model.associate === 'function')
       .forEach(model => {
         model.models = this.models;
-        model.sequelize = this.sequelize;
+        model.sequelize = this.connection;
         model.associate(this.models);
 
         if (model.options && model.options.cache) {
@@ -78,6 +56,13 @@ class Database {
       return console.log(`Database disconnection error: ${error}`);
     }
   }
-};
+
+  setup() {
+    this.loadModels();
+    this.associateModels();
+
+    return this.authenticate();
+  }
+}
 
 export default Database;

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Token from '../services/Token';
+import Token from '../services/token';
 
 class TokenController {
 	async generateToken(req, res) {
