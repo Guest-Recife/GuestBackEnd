@@ -8,7 +8,7 @@ import routes from './routes/routes.js';
 
 class App {
   constructor() {
-    this.port = '3001';
+    this.port = '5005';
     this.app = express();
     this.httpServer = http.createServer(this.app);
 

@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import TokenCtrl from "../controllers/TokenCtrl";
-import Validate from "../schemas/Validate";
-import TokenSchema from "../schemas/Token";
+import TokenCtrl from "../controllers/token";
+import Validate from "../schemas/validate";
+import TokenSchema from "../schemas/token";
 
 const routes = new Router();
 

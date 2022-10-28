@@ -8,16 +8,8 @@ dotenv.config();
 
 class Database {
   constructor() {
-    console.log(dbConfig);
-    this.connection = new Sequelize(dbConfig.url, {
-      ...dbConfig
-    });
-  }
-
-  async setup() {
-    this.loadModels();
-    this.associateModels();
-    return this.authenticate();
+    this.models = {};
+    this.connection = new Sequelize(dbConfig.url, dbConfig.options);
   }
 
   loadModels() {
@@ -29,7 +21,7 @@ class Database {
 
         if (!Model || Model.name === 'BaseModel') return;
 
-        this.models[Model.name] = Model.load(this.sequelize, Sequelize);
+        this.models[Model.name] = Model.load(this.connection, Sequelize);
       });
   }
 
@@ -38,7 +30,7 @@ class Database {
       .filter(model => typeof model.associate === 'function')
       .forEach(model => {
         model.models = this.models;
-        model.sequelize = this.sequelize;
+        model.sequelize = this.connection;
         model.associate(this.models);
 
         if (model.options && model.options.cache) {
@@ -64,6 +56,13 @@ class Database {
       return console.log(`Database disconnection error: ${error}`);
     }
   }
-};
+
+  setup() {
+    this.loadModels();
+    this.associateModels();
+
+    return this.authenticate();
+  }
+}
 
 export default Database;
