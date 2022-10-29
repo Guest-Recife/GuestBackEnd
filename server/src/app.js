@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import express from 'express';
 
 import Database from './config/database.js';
-import routes from './routes/routes.js';
+import Routes from './routes/routes.js';
 
 class App {
   constructor() {
@@ -13,6 +13,7 @@ class App {
     this.httpServer = http.createServer(this.app);
 
     this.database = new Database();
+    this.routes = new Routes();
   }
 
   start() {
@@ -24,7 +25,7 @@ class App {
       this.app.use(express.json());
       this.app.use(express.urlencoded({ extended: true }));
 
-      this.app.use(routes);
+      this.app.use(this.routes.load());
 
       this.database.setup();
     });

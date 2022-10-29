@@ -1,9 +1,17 @@
 import { Router } from 'express';
 
-import tokenRoutes from './token';
+import UserRoutes from './user';
 
-const routes = new Router();
+export default class Routes {
+  constructor() {
+    this.routes = new Router();
 
-routes.use('/tokens', tokenRoutes);
+    this.userRoutes = new UserRoutes();
+  }
 
-export default routes;
+  load() {
+    this.routes.use('/', this.userRoutes.setup());
+
+    return this.routes;
+  }
+}
