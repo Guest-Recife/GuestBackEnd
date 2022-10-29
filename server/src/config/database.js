@@ -34,7 +34,7 @@ class Database {
         model.associate(this.models);
 
         if (model.options && model.options.cache) {
-          SequelizeCache(model).init();
+          // SequelizeCache(model).init();
         }
       });
   }
@@ -42,18 +42,18 @@ class Database {
   async authenticate() {
     try {
       await this.connection.authenticate();
-      return console.log('Database is connected.');
+      return console.log('Database is connected.'); // eslint-disable-line no-console
     } catch (error) {
-      return console.log(`Database connection error: ${error}`);
+      return console.log(`Database connection error: ${error}`); // eslint-disable-line no-console
     }
   }
 
   async disconnect() {
     try {
       await this.connection.close();
-      return console.log('Database is disconnected.');
+      return console.log('Database is disconnected.'); // eslint-disable-line no-console
     } catch (error) {
-      return console.log(`Database disconnection error: ${error}`);
+      return console.log(`Database disconnection error: ${error}`); // eslint-disable-line no-console
     }
   }
 

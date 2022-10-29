@@ -17,7 +17,8 @@ class App {
 
   start() {
     this.httpServer.listen(this.port, () => {
-      console.log(`Servidor iniciado na porta ${this.port}`)
+      console.log(`Servidor iniciado na porta ${this.port}`); // eslint-disable-line no-console
+
       this.app.use(cors());
       this.app.use(helmet());
       this.app.use(express.json());
@@ -40,6 +41,6 @@ class App {
       });
     };
   }
-};
+}
 
 export default App;
