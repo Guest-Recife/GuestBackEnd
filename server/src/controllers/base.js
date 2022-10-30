@@ -1,6 +1,6 @@
 export default class Base {
   handleSuccess(res, data) {
-    res.status(400).json({
+    res.status(200).json({
       status: 'success',
       code: 200,
       data

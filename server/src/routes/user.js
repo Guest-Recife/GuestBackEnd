@@ -14,6 +14,7 @@ export default class User {
     const router = new Router();
 
     router.post('/', schemaValidator.validate(userSchema.login), this.userController.login);
+    router.post('/sign-up', schemaValidator.validate(userSchema.register), this.userController.register);
 
     return router;
   }
