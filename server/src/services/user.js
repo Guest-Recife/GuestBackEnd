@@ -1,7 +1,9 @@
 import { Op } from 'sequelize';
-import bcrypt from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
+import { compareSync } from 'bcryptjs';
 
 import BaseService from './base';
+import auth from '../constants/auth';
 import UserRepository from '../repositories/user';
 
 export default class User extends BaseService {
@@ -21,7 +23,7 @@ export default class User extends BaseService {
 
     let user = await this.userRepository.findOne({
       where: filter,
-      attributes: ['password']
+      attributes: ['id', 'password']
     });
 
     if (!user || !user.password) {
@@ -30,7 +32,15 @@ export default class User extends BaseService {
       };
     }
 
-    return bcrypt.compareSync(data.password, user.password);
+    const userValidated = compareSync(data.password, user.password);
+
+    if (!userValidated) {
+      throw this.handleException({ error: 'LOGIN_OR_PASSWORD_INVALID', code: 400 });
+    }
+
+    return sign({ id: user.id }, auth.secret, {
+      expiresIn: auth.expiration_time
+    });
   }
 
   register(data) {
