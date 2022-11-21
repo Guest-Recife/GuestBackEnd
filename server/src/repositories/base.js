@@ -26,14 +26,17 @@ export default class Base {
   }
 
   update(filter, changes) {
-    return this.model.update(filter, changes);
+    return this.model.update(changes, filter);
   }
 
   destroy(filter) {
-    return this.model.destroy(filter);
+    return this.model.destroy({
+      ...filter,
+      force: true
+    });
   }
 
   delete(filter) {
-    return this.model.update({ deleted_at: new Date() }, filter);
+    return this.model.destroy(filter);
   }
 }

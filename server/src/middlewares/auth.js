@@ -1,6 +1,6 @@
 import { verify } from 'jsonwebtoken';
 import { promisify } from 'util';
-import authConfig from '../config/auth';
+import authConfig from '../constants/auth';
 
 export default async (req, res, next) => {
   const authHeader = req.headers.authorization;

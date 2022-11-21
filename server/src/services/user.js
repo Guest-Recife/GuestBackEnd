@@ -46,4 +46,48 @@ export default class User extends BaseService {
   register(data) {
     return this.userRepository.create(data);
   }
+
+  find(id) {
+    return this.userRepository.findOne({
+      where: {
+        id
+      },
+      attributes: ['name', 'last_name', 'birth_date', 'email', 'gender', 'cpf', 'phone']
+    });
+  }
+
+  async update(id, changes) {
+    const options = {};
+
+    if (changes.new_password) {
+      const user = await this.userRepository.findOne({
+        where: { id },
+        attributes: ['password'],
+        raw: true
+      });
+
+      const samePassword = compareSync(changes.password, user.password);
+
+      if (!samePassword) throw this.handleException({ error: 'INVALID_PASSWORD' });
+
+      options.individualHooks = true;
+      changes.password = changes.new_password;
+    }
+
+    return this.userRepository.update({
+      where: {
+        id
+      },
+      ...options
+    }, changes);
+  }
+
+  delete(id) {
+    return this.userRepository.delete({
+      where: {
+        id
+      },
+      logging: true
+    });
+  }
 }

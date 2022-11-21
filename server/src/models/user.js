@@ -23,8 +23,13 @@ export default class UserModel extends BaseModel  {
       tableName: 'users',
       createdAt: 'created_at',
       updatedAt: 'updated_at',
+      deletedAt: 'deleted_at',
+      paranoid: true,
       hooks: {
         beforeCreate: user => {
+          return user.password = bcryptjs.hashSync(user.password, 8);
+        },
+        beforeUpdate: user => {
           return user.password = bcryptjs.hashSync(user.password, 8);
         }
       }
