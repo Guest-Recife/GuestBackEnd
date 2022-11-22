@@ -3,7 +3,7 @@ export default class Base {
     res.status(200).json({
       status: 'success',
       code: 200,
-      data
+      body: data
     });
   }
 
