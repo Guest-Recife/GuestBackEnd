@@ -1,8 +1,0 @@
-button.register{
-    background-color: #de5c3d;
-    margin-top: 30px;
-}
-
-button.register:focus{
-    background-color: #eb775b;
-}
