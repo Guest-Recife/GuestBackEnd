@@ -5,7 +5,7 @@ import {
   date
 } from 'yup';
 
-import cpfValidator from '../utils/yup';
+import YupUtils from '../utils/yup';
 
 const schemas = {
   login: {
@@ -37,7 +37,7 @@ const schemas = {
       last_name: string().min(1).max(99),
       birth_date: date(),
       gender: string().oneOf(['masculino', 'feminino', 'outro']),
-      cpf: string().test('test-invalid-cpf', 'cpf inválido', cpfValidator.isCPFValid())
+      cpf: string().test('test-invalid-cpf', 'cpf inválido', YupUtils.isCPFValid())
         .matches(/^[0-9]+$/, 'Must be only digits')
         .min(11, 'Must be exactly 11 digits')
         .max(11, 'Must be exactly 11 digits'),
