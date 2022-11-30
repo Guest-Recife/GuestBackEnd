@@ -6,6 +6,9 @@ export default class Restaurant extends BaseController {
     super();
 
     this.restaurantService = new RestaurantServices();
+
+    this.find = this.find.bind(this);
+    this.update = this.update.bind(this);
   }
 
   async find(req, res) {
@@ -16,7 +19,7 @@ export default class Restaurant extends BaseController {
     } catch (error) {
       this.handleError(res, error);
     }
-  };
+  }
 
   async update(req, res) {
     try {
@@ -26,5 +29,5 @@ export default class Restaurant extends BaseController {
     } catch (error) {
       this.handleError(res, error);
     }
-  };
+  }
 }

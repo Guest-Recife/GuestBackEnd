@@ -13,8 +13,8 @@ export default class Restaurant {
   setup() {
     const router = new Router();
 
-    router.get('/restaurant/:id', schemaValidator.validate(restaurantSchema.find), this.restaurantController.find);
-    router.update('/restaurant/:id', schemaValidator.validate(restaurantSchema.update), this.restaurantController.update);
+    router.get('/:id', schemaValidator.validate(restaurantSchema.find), this.restaurantController.find);
+    router.put('/:id', schemaValidator.validate(restaurantSchema.update), this.restaurantController.update);
 
     return router;
   }

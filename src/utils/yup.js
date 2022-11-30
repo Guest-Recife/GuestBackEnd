@@ -1,6 +1,8 @@
 export default class YupUtils {
   static isCPFValid() {
     return cpf => {
+      if (!cpf) return true;
+
       cpf = cpf.replace(/[^\d]+/g,'');
 
       if (cpf === '') return false;
@@ -48,54 +50,60 @@ export default class YupUtils {
 
   static isCNPJValid() {
     return cnpj => {
+      if (!cnpj) return false;
 
-      cnpj = cnpj.replace(/[^\d]+/g,'');
+      const isString = typeof cnpj === 'string';
+      const validTypes = isString || Number.isInteger(cnpj) || Array.isArray(cnpj);
 
-      if(cnpj == '') return false;
+      if (!validTypes) return false;
 
-      if (cnpj.length != 14)
-          return false;
+      if (isString) {
 
-      if (cnpj == "00000000000000" ||
-          cnpj == "11111111111111" ||
-          cnpj == "22222222222222" ||
-          cnpj == "33333333333333" ||
-          cnpj == "44444444444444" ||
-          cnpj == "55555555555555" ||
-          cnpj == "66666666666666" ||
-          cnpj == "77777777777777" ||
-          cnpj == "88888888888888" ||
-          cnpj == "99999999999999")
-          return false;
+        if (cnpj.length > 18) return false;
 
-      tam = cnpj.length - 2
-      num = cnpj.substring(0,tam);
-      dig = cnpj.substring(tam);
-      sum = 0;
-      pos = tam - 7;
-      for (i = tam; i >= 1; i--) {
-        sum += num.charAt(tam - i) * pos--;
-        if (pos < 2)
-              pos = 9;
+        const digitsOnly = /^\d{14}$/.test(cnpj);
+        const validFormat = /^\d{2}.\d{3}.\d{3}\/\d{4}-\d{2}$/.test(cnpj);
+
+        if (digitsOnly || validFormat) true;
+        else return false;
       }
-      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-      if (result != dig.charAt(0))
-          return false;
 
-      tam = tam + 1;
-      num = cnpj.substring(0,tam);
-      sum = 0;
-      pos = tam - 7;
-      for (i = tam; i >= 1; i--) {
-        sum += num.charAt(tam - i) * pos--;
-        if (pos < 2)
-              pos = 9;
-      }
-      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-      if (result != dig.charAt(1))
-            return false;
+      const match = cnpj.toString().match(/\d/g);
+      const numbers = Array.isArray(match) ? match.map(Number) : [];
 
-      return true;
-    }
+      if (numbers.length !== 14) return false;
+
+      const items = [...new Set(numbers)];
+      if (items.length === 1) return false;
+
+
+      const calc = x => {
+        const slice = numbers.slice(0, x);
+        let factor = x - 7;
+        let sum = 0;
+
+        for (let i = x; i >= 1; i--) {
+          const n = slice[x - i];
+
+          sum += n * factor--;
+
+          if (factor < 2) factor = 9;
+        }
+
+        const result = 11 - (sum % 11);
+
+        return result > 9 ? 0 : result;
+      };
+
+      const digits = numbers.slice(12);
+
+
+      const digit0 = calc(12);
+      if (digit0 !== digits[0]) return false;
+
+
+      const digit1 = calc(13);
+      return digit1 === digits[1];
+    };
   }
 }
