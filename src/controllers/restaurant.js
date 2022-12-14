@@ -7,13 +7,19 @@ export default class Restaurant extends BaseController {
 
     this.restaurantService = new RestaurantServices();
 
-    this.find = this.find.bind(this);
+    this.list = this.list.bind(this);
     this.update = this.update.bind(this);
   }
 
-  async find(req, res) {
+  async list(req, res) {
     try {
-      const restaurant = await this.restaurantService.find(req.filter.id);
+      let restaurant;
+
+      if (req.filter.id) {
+        restaurant = await this.restaurantService.find(req.filter.id);
+      } else {
+        restaurant = await this.restaurantService.index();
+      }
 
       this.handleSuccess(res, restaurant);
     } catch (error) {

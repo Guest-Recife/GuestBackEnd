@@ -8,6 +8,10 @@ export default class Restaurant extends BaseService {
     this.restaurantRespository = new RestaurantRepository();
   }
 
+  index() {
+    return this.restaurantRespository.findAll();
+  }
+
   async find(id) {
     const restaurant = await this.restaurantRespository.findOne({
       where: {
