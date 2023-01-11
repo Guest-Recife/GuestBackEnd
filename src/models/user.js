@@ -2,7 +2,7 @@ import bcryptjs from 'bcryptjs';
 
 import BaseModel from './base';
 
-export default class UserModel extends BaseModel  {
+export default class User extends BaseModel  {
   static load(sequelize, DataTypes) {
     return super.init({
       name: DataTypes.STRING,

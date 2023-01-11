@@ -1,6 +1,6 @@
 import BaseModel from './base';
 
-export default class RestaurantModel extends BaseModel {
+export default class Restaurant extends BaseModel {
   static load(sequelize, DataTypes) {
     return super.init({
       name: DataTypes.STRING,
@@ -25,7 +25,7 @@ export default class RestaurantModel extends BaseModel {
   }
 
   static associate(models) {
-    this.hasMany(models.food_category, { foreignKey: 'restaurant_id' });
-    this.hasMany(models.food_item, { foreignKey: 'restaurant_id' });
+    this.hasMany(models.FoodCategory, { foreignKey: 'restaurant_id' });
+    this.hasMany(models.FoodItem, { foreignKey: 'restaurant_id' });
   }
 }
