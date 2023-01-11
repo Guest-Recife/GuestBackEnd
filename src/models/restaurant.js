@@ -23,4 +23,9 @@ export default class RestaurantModel extends BaseModel {
       paranoid: true
     });
   }
+
+  static associate(models) {
+    this.hasMany(models.food_category, { foreignKey: 'restaurant_id' });
+    this.hasMany(models.food_item, { foreignKey: 'restaurant_id' });
+  }
 }
