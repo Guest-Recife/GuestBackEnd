@@ -2,8 +2,8 @@ import { Router } from 'express';
 
 import UserRoutes from './user';
 import RestaurantRoutes from './restaurant';
-import FoodCategory from './food_category';
-import FoodItem from './food_item';
+import FoodCategory from './food-category';
+import FoodItem from './food-item';
 
 export default class Routes {
   constructor() {
@@ -18,8 +18,8 @@ export default class Routes {
   load() {
     this.routes.use('/', this.userRoutes.setup());
     this.routes.use('/restaurant', this.restaurantRoutes.setup());
-    this.routes.use('/food_category', this.foodCategoryRoutes.setup());
-    this.routes.use('/food_item', this.foodItemRoutes.setup());
+    this.routes.use('/food-category', this.foodCategoryRoutes.setup());
+    this.routes.use('/food-item', this.foodItemRoutes.setup());
 
     return this.routes;
   }

@@ -1,5 +1,5 @@
 import BaseRepository from './base';
-import FoodItemModel from '../models/food_item';
+import FoodItemModel from '../models/food-item';
 
 export default class FoodItem extends BaseRepository {
   constructor() {

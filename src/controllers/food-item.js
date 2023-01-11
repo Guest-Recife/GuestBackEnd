@@ -1,4 +1,4 @@
-import FoodItemServices from '../services/food_item';
+import FoodItemServices from '../services/food-item';
 import BaseController from './base';
 
 export default class FoodItem extends BaseController {
@@ -23,9 +23,9 @@ export default class FoodItem extends BaseController {
 
   async list(req, res) {
     try {
-      const food_items = await this.foodItemServices.list(req.filter.id);
+      const foodItems = await this.foodItemServices.list(req.filter.id);
 
-      this.handleSuccess(res, food_items);
+      this.handleSuccess(res, foodItems);
     } catch (error) {
       this.handleError(res, error);
     }

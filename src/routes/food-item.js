@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
 import schemaValidator from '../utils/schema-validator';
-import foodItemSchema from '../schemas/food_item';
+import foodItemSchema from '../schemas/food-item';
 
-import FoodItemController from '../controllers/food_item';
+import FoodItemController from '../controllers/food-item';
 
 export default class FoodItem {
   constructor() {

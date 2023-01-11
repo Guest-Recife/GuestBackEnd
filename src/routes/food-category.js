@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
 import schemaValidator from '../utils/schema-validator';
-import foodCategorySchema from '../schemas/food_category';
+import foodCategorySchema from '../schemas/food-category';
 
-import FoodCategoryController from '../controllers/food_category';
+import FoodCategoryController from '../controllers/food-category';
 
 export default class FoodCategory {
   constructor() {
