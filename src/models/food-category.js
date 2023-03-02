@@ -3,7 +3,7 @@ import BaseModel from './base';
 export default class FoodCategory extends BaseModel {
   static load(sequelize, DataTypes) {
     return super.init({
-      name: DataTypes.STRING,
+      name: DataTypes.STRING
     }, {
       timestamps: true,
       sequelize: sequelize,

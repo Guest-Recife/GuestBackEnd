@@ -18,8 +18,8 @@ export default class Routes {
   load() {
     this.routes.use('/', this.userRoutes.setup());
     this.routes.use('/restaurant', this.restaurantRoutes.setup());
-    this.routes.use('/food-category', this.foodCategoryRoutes.setup());
-    this.routes.use('/food-item', this.foodItemRoutes.setup());
+    // this.routes.use('/food-category', this.foodCategoryRoutes.setup());
+    // this.routes.use('/food-item', this.foodItemRoutes.setup());
 
     return this.routes;
   }

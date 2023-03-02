@@ -13,9 +13,9 @@ export default class FoodItem {
   setup() {
     const router = new Router();
 
-    router.post('/', schemaValidator.validate(foodItemSchema.create), this.foodItemController.create);
-    router.get('/:id', schemaValidator.validate(foodItemSchema.list), this.foodItemController.list);
-    router.put('/:id', schemaValidator.validate(foodItemSchema.update), this.foodItemController.update);
+    // router.post('/', schemaValidator.validate(foodItemSchema.create), this.foodItemController.create);
+    // router.get('/:id', schemaValidator.validate(foodItemSchema.list), this.foodItemController.list);
+    // router.put('/:id', schemaValidator.validate(foodItemSchema.update), this.foodItemController.update);
 
     return router;
   }

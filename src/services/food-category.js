@@ -8,13 +8,7 @@ export default class FoodCategory extends BaseService {
     this.foodCategoryRepository = new FoodCategoryRepository();
   }
 
-  async create(data) {
-    const foodCategory = await this.foodCategoryRepository.findOne({
-      where: { name: data.name }
-    });
-
-    if (foodCategory) throw this.handleException({ error: 'ALREADY_EXISTS', code: 401});
-
+  create(data) {
     return this.foodCategoryRepository.create(data);
   }
 
@@ -26,7 +20,7 @@ export default class FoodCategory extends BaseService {
       attributes: ['name']
     });
 
-    if (!foodCategories) throw this.handleException({ error: 'NOT_FOUND', code: 400 });
+    if (!foodCategories.length) throw this.handleException({ error: 'NOT_FOUND', code: 400 });
 
     return foodCategories;
   }
