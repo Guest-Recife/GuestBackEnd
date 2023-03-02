@@ -14,7 +14,10 @@ export default class Base {
   }
 
   findAll(filter) {
-    return this.model.findAll(filter);
+    return this.model.findAll({
+      ...filter,
+      raw: true
+    });
   }
 
   findOne(filter) {
