@@ -21,7 +21,7 @@ export default class Routes {
     this.routes.use('/', this.userRoutes.setup());
     this.routes.use('/restaurant', this.restaurantRoutes.setup());
     // this.routes.use('/food-category', this.foodCategoryRoutes.setup());
-    // this.routes.use('/food-item', this.foodItemRoutes.setup());
+    this.routes.use('/food-item', this.foodItemRoutes.setup());
     // this.routes.use('/table', this.tableRoutes.setup());
 
     return this.routes;
