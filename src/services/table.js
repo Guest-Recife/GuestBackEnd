@@ -1,5 +1,5 @@
 import BaseService from './base';
-import TableRepository from '../repositories/tables';
+import TableRepository from '../repositories/table';
 
 export default class Table extends BaseService {
   constructor() {
@@ -8,7 +8,7 @@ export default class Table extends BaseService {
     this.tableRepository = new TableRepository();
   }
 
-  async create(data) {
+  create(data) {
     return this.tableRepository.create(data);
   }
 
@@ -17,7 +17,7 @@ export default class Table extends BaseService {
       restaurant_id: id
     });
 
-    if (!tables) throw this.handleException({ error: 'NOT_FOUND', code: 400 });
+    if (!tables) throw this.handleException('NOT_FOUND', 400);
 
     return tables;
   }
@@ -25,7 +25,7 @@ export default class Table extends BaseService {
   async find(id) {
     const table = await this.tableRepository.findOne({ id });
 
-    if (!table) throw this.handleException({ error: 'NOT_FOUND', code: 400 });
+    if (!table) throw this.handleException('NOT_FOUND', 400);
 
     return table;
   }

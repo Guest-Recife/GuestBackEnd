@@ -49,7 +49,7 @@ const schemas = {
       password: string().min(6)
         .when(['new_password'], (new_password, schema) => new_password ? schema.required() : schema),
       new_password: string().min(6)
-    })
+    }).noUnknown()
   }
 };
 

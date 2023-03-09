@@ -1,23 +1,25 @@
 import BaseRepository from './base';
 import FoodItemModel from '../models/food-item';
-import FoodCategoryModel from '../models/food-category';
+import FoodCategory from './food-category';
 
 export default class FoodItem extends BaseRepository {
   constructor() {
     super(FoodItemModel);
 
-    this.foodCategoryModel = FoodCategoryModel;
+    this.foodCategoryRepository = FoodCategory;
   }
 
   listAllByCategory(filter) {
-    return this.foodCategoryModel.findAll({
+    return this.foodCategoryRepository.findAll({
       where: {
-        ...filter
+        ...filter,
+        deleted_at: null
       },
       include: [{
         model: this.model,
         attributes: ['name', 'description', 'price']
       }],
+      paranoid: false,
       attributes: ['name']
     });
   }

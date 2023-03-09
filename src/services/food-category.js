@@ -20,7 +20,7 @@ export default class FoodCategory extends BaseService {
       attributes: ['name']
     });
 
-    if (!foodCategories.length) throw this.handleException({ error: 'NOT_FOUND', code: 400 });
+    if (!foodCategories.length) throw this.handleException('NOT_FOUND', 400);
 
     return foodCategories;
   }

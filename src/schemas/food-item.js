@@ -14,7 +14,7 @@ const schemas = {
   },
   list: {
     params: object().shape({
-      id: number().required().min(1)
+      restaurant_id: number().required().min(1)
     }).noUnknown()
   },
   update: {
