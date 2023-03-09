@@ -3,7 +3,7 @@ import BaseModel from './base';
 export default class Tables extends BaseModel {
   static load(sequelize, DataTypes) {
     return super.init({
-      number: DataTypes.INTEGER,
+      code: DataTypes.STRING,
       is_crowded: DataTypes.BOOLEAN
     }, {
       timestamps: true,

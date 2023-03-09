@@ -1,12 +1,13 @@
 import {
   object,
   number,
+  string
 } from 'yup';
 
 const schemas = {
   create: {
     body: object().shape({
-      number: number().required()
+      code: string().required()
     }).noUnknown()
   },
   list: {
@@ -19,7 +20,7 @@ const schemas = {
       id: number().required().min(1)
     }).noUnknown(),
     body: object().shape({
-      number: number(),
+      code: string(),
       is_crowded: number().required()
     }).noUnknown()
   }

@@ -12,9 +12,9 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER
         },
-        number: {
+        code: {
           allowNull: false,
-          type: Sequelize.DataTypes.INTEGER
+          type: Sequelize.DataTypes.STRING
         },
         is_crowded: {
           allowNull: false,
