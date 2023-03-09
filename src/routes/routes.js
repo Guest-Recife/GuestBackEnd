@@ -5,6 +5,7 @@ import Restaurant from './restaurant';
 import FoodCategory from './food-category';
 import FoodItem from './food-item';
 import Table from './table';
+import Register from './register';
 
 export default class Routes {
   constructor() {
@@ -15,6 +16,7 @@ export default class Routes {
     this.foodCategoryRoutes = new FoodCategory;
     this.foodItemRoutes = new FoodItem;
     this.tableRoutes = new Table;
+    this.registerRoutes = new Register;
   }
 
   load() {
@@ -23,6 +25,7 @@ export default class Routes {
     // this.routes.use('/food-category', this.foodCategoryRoutes.setup());
     this.routes.use('/food-item', this.foodItemRoutes.setup());
     // this.routes.use('/table', this.tableRoutes.setup());
+    this.routes.use('/registers', this.registerRoutes.setup());
 
     return this.routes;
   }
