@@ -1,10 +1,13 @@
 import BaseModel from './base';
 
-export default class Tables extends BaseModel {
+export default class Table extends BaseModel {
   static load(sequelize, DataTypes) {
     return super.init({
-      code: DataTypes.STRING,
-      is_crowded: DataTypes.BOOLEAN
+      number: DataTypes.INTEGER,
+      is_crowded: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      }
     }, {
       timestamps: true,
       sequelize: sequelize,

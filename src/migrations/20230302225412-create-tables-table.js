@@ -18,7 +18,8 @@ module.exports = {
         },
         is_crowded: {
           allowNull: false,
-          type: Sequelize.BOOLEAN
+          type: Sequelize.BOOLEAN,
+          defaultValue: false
         },
         restaurant_id: {
           allowNull: false,
