@@ -23,7 +23,7 @@ export default class FoodItem extends BaseController {
 
   async list(req, res) {
     try {
-      const foodItems = await this.foodItemServices.list(req.filter.id);
+      const foodItems = await this.foodItemServices.list(req.filter.restaurant_id);
 
       this.handleSuccess(res, foodItems);
     } catch (error) {

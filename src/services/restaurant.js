@@ -20,7 +20,7 @@ export default class Restaurant extends BaseService {
       attributes: ['name', 'cnpj', 'is_delivery', 'cep', 'state', 'city', 'district', 'address', 'number']
     });
 
-    if (!restaurant) throw this.handleException({ error: 'NOT_FOUND', code: 400 });
+    if (!restaurant) throw this.handleException('NOT_FOUND', 400);
 
     return restaurant;
   }

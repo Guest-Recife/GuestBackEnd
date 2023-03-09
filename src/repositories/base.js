@@ -7,39 +7,46 @@ export default class Base {
     this.model = model;
   }
 
-  async exists(filter) {
-    const item = this.findOne(filter);
+  getModel() {
+    return this.model;
+  }
+
+  async exists(options) {
+    const item = this.findOne(options);
 
     return !!item;
   }
 
-  findAll(filter) {
+  findAll(options) {
     return this.model.findAll({
-      ...filter,
+      ...options,
       raw: true
     });
   }
 
-  findOne(filter) {
-    return this.model.findOne(filter);
+  findOne(options) {
+    return this.model.findOne({
+      ...options,
+      raw: true
+    });
   }
 
   create(data, options) {
     return this.model.create(data, options);
   }
 
-  update(filter, changes) {
-    return this.model.update(changes, filter);
+  update(options, changes) {
+    return this.model.update(changes, options);
   }
 
-  destroy(filter) {
+  destroy(options) {
     return this.model.destroy({
-      ...filter,
+      ...options,
       force: true
     });
   }
 
-  delete(filter) {
-    return this.model.destroy(filter);
+  delete(options) {
+    return this.model.destroy(options);
   }
 }

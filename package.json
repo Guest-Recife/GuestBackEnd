@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon index.js",
+    "start:dev": "nodemon --inspect index.js",
     "migration:create": "sequelize-cli migration:generate --name",
     "migration:undo": "sequelize-cli db:migrate:undo --name",
     "migration:migrate": "sequelize-cli db:migrate",
@@ -21,6 +21,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "helmet": "^5.1.1",
+    "moment": "^2.29.4",
     "path": "^0.12.7",
     "pg": "^8.7.3",
     "sequelize": "^6.21.3"

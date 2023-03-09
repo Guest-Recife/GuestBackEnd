@@ -35,7 +35,7 @@ export default class User extends BaseService {
     const userValidated = compareSync(data.password, user.password);
 
     if (!userValidated) {
-      throw this.handleException({ error: 'LOGIN_OR_PASSWORD_INVALID', code: 400 });
+      throw this.handleException('LOGIN_OR_PASSWORD_INVALID', 400);
     }
 
     return sign({ id: user.id }, auth.secret, {
@@ -68,7 +68,7 @@ export default class User extends BaseService {
 
       const samePassword = compareSync(changes.password, user.password);
 
-      if (!samePassword) throw this.handleException({ error: 'INVALID_PASSWORD' });
+      if (!samePassword) throw this.handleException('INVALID_PASSWORD', 400);
 
       options.individualHooks = true;
       changes.password = changes.new_password;
