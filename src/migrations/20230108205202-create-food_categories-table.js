@@ -38,7 +38,7 @@ module.exports = {
           type: Sequelize.DataTypes.DATE,
           allowNull: true
         }
-      });
+      }, { transaction });
 
       await transaction.commit();
     } catch (error) {
@@ -52,7 +52,7 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction();
 
     try {
-      await queryInterface.dropTable('food_categories');
+      await queryInterface.dropTable('food_categories', { transaction });
 
       await transaction.commit();
     } catch (error) {

@@ -53,7 +53,7 @@ module.exports = {
           type: Sequelize.DataTypes.DATE,
           allowNull: true
         }
-      });
+      }, { transaction });
 
       await transaction.commit();
     } catch (error) {
@@ -66,7 +66,7 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction();
 
     try {
-      await queryInterface.dropTable('users');
+      await queryInterface.dropTable('users', { transaction });
 
       await transaction.commit();
     } catch (error) {
