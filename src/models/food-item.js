@@ -21,5 +21,6 @@ export default class FoodItem extends BaseModel {
   static associate(models) {
     this.belongsTo(models.Restaurant, { foreignKey: 'restaurant_id' });
     this.belongsTo(models.FoodCategory, { foreignKey: 'food_category_id' });
+    this.belongsToMany(models.Order, { through: models.OrderItem });
   }
 }
