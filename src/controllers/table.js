@@ -24,7 +24,7 @@ export default class Table extends BaseController {
 
   async list(req, res) {
     try {
-      const tables = await this.tableServices.list(req.filter.id);
+      const tables = await this.tableServices.list(req.filter.restaurant_id);
 
       this.handleSuccess(res, tables);
     } catch (error) {

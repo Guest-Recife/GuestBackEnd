@@ -20,6 +20,10 @@ module.exports = {
           type: Sequelize.DataTypes.BOOLEAN,
           defaultValue: false
         },
+        canceled: {
+          type: Sequelize.DataTypes.BOOLEAN,
+          defaultValue: false
+        },
         order_id: {
           allowNull: false,
           type: Sequelize.INTEGER,

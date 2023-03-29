@@ -6,6 +6,7 @@ export default class OrderItem extends BaseModel {
       quantity: DataTypes.INTEGER,
       unit_price: DataTypes.DOUBLE,
       has_arrived: DataTypes.BOOLEAN,
+      canceled: DataTypes.BOOLEAN,
       is_deleted: DataTypes.BOOLEAN
     }, {
       timestamps: false,
@@ -13,7 +14,7 @@ export default class OrderItem extends BaseModel {
       modelName: 'order_item',
       tableName: 'order_items',
       createdAt: 'created_at',
-      paranoid: true
+      paranoid: false
     });
   }
 }

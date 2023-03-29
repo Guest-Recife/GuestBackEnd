@@ -44,7 +44,8 @@ export default class Register extends BaseService {
         this.tableRepository.update({
           where: {
             id: data.table_id
-          }
+          },
+          transaction
         }, { is_crowded: true })
       ]);
     });

@@ -22,5 +22,6 @@ const schemas = {
 
 export default {
   create: object(schemas.create),
-  close: object(schemas.find)
+  close: object(schemas.find),
+  bill: object(schemas.find)
 };

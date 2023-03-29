@@ -14,7 +14,7 @@ export default class Register {
     const router = new Router();
 
     router.post('/:restaurant_id/create', schemaValidator.validate(registerSchema.create), this.registerController.create);
-    // router.put('/:id/close', schemaValidator.validate(registerSchema.close), this.registerController.close);
+    router.put('/:id/close', schemaValidator.validate(registerSchema.close), this.registerController.close);
 
     return router;
   }

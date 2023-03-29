@@ -17,22 +17,30 @@ export default class Base {
     return !!item;
   }
 
+  count(options) {
+    return this.model.count(options);
+  }
+
   findAll(options) {
     return this.model.findAll({
+      raw: true,
       ...options,
-      raw: true
     });
   }
 
   findOne(options) {
     return this.model.findOne({
-      ...options,
-      raw: true
+      raw: true,
+      ...options
     });
   }
 
   create(data, options) {
     return this.model.create(data, options);
+  }
+
+  bulkCreate(data, options) {
+    return this.model.bulkCreate(data, options);
   }
 
   update(options, changes) {

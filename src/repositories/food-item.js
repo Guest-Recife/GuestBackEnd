@@ -9,6 +9,17 @@ export default class FoodItem extends BaseRepository {
     this.foodCategoryRepository = FoodCategory;
   }
 
+  async getItemsToCreate(ids) {
+    return this.findAll({
+      where: {
+        id: ids,
+        deleted_at: null
+      },
+      paranoid: false,
+      raw: false
+    });
+  }
+
   listAllByCategory(filter) {
     return this.foodCategoryRepository.findAll({
       where: {
