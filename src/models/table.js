@@ -22,5 +22,6 @@ export default class Table extends BaseModel {
 
   static associate(models) {
     this.belongsTo(models.Restaurant, { foreignKey: 'restaurant_id' });
+    this.hasMany(models.Register, { foreignKey: 'table_id' });
   }
 }

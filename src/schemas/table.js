@@ -12,6 +12,11 @@ const schemas = {
   },
   list: {
     params: object().shape({
+      restaurant_id: number().required().min(1)
+    }).noUnknown()
+  },
+  find: {
+    params: object().shape({
       id: number().required().min(1)
     }).noUnknown()
   },
